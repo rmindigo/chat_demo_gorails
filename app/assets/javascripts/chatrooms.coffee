@@ -5,9 +5,18 @@ $(document).on "turbolinks:load", ->
 			$(this).submit()
 
 
-$("#new_message").on "submit", (e) ->
-	e.preventDefault()
-	console.log "SUBMITTED FORM"
+	$("#new_message").on "submit", (e) ->
+		e.preventDefault()
+
+		chatroom_id = $("[data-behavior='messages']").data("chatroom-id")
+		body		= $("#message_body")
+
+		App.chatrooms.send_message(chatroom_id, body.val())
+
+		body.val("")
+
+
+		
     
 
     
